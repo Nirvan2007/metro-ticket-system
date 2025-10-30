@@ -214,7 +214,7 @@ def main():
             Tickets_purchased.append(ticket)
             ticket.price = ticket.calc_price(path)
             directions = ticket.directions(path,Stations)
-            print("Ticket price is: ",ticket.price)
+            print("\nTicket price is: ",ticket.price)
             print("Path is : ")
             for i in path:
                 print(i," - ",end ="")
@@ -228,3 +228,4 @@ def main():
             break
 
 main()
+
