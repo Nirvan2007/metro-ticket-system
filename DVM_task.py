@@ -1,12 +1,15 @@
 from delhi_metro_lines import * # type: ignore
 import csv
+
 class Station:
+
     def __init__(self,station_name,line = None,position = None,adj = None):
         self.station_name = station_name
         self.line = line
         self.position = position
         self.adj = adj
         self.id = [self.line[0] + "_" + str(self.position[0])]
+
     def add_line(self,line,position):
         if self.line == None:
             self.line = []
@@ -18,8 +21,10 @@ class Station:
             self.position.append(position)
         else:
             self.position.append(position)
+
     def update_id(self,line,position):
         self.id.append(line + "_" + str(position))
+
     def system(self,Lines,Stations):
         for i in range (0,len(self.line)):
             self.adj = []
@@ -43,7 +48,7 @@ class Station:
                 if new.station_name == self.station_name and new != self:
                     self.adj.append(new.station_name)
 
-class line:
+class Line:
     def __init__(self):
         self.red_line = stations_red_line # type: ignore
         self.blue_line_main = stations_blue_line_main # type: ignore
@@ -56,20 +61,26 @@ class line:
         self.magenta_line = stations_magenta_line # type: ignore
         self.pink_line = stations_pink_line # type: ignore
         self.grey_line = stations_grey_line # type: ignore
+
+
 class Ticket:
     ticket_id = 0
     price_perstation = 10
+
     def __init__(self,start,end,path):
         Ticket.ticket_id += 1
         self.ticket_id = Ticket.ticket_id
         self.start = start 
         self.end = end 
-        self.path = path 
+        self.path = path
+
     @classmethod
     def change_price(price):
         Ticket.price = price
+
     def calc_price(self,path):
         return ((len(self.path)-1)*self.price_perstation)
+
     def directions(self,path,Stations):
         dirn = [] 
         for i in range(0, len(self.path)-1):
@@ -99,8 +110,11 @@ class Ticket:
         direction = "Leave metro at " + path[-1]
         dirn.append(direction)
         return dirn
+
     def __str__(self):
         return str(self.ticket_id)
+
+
 def input_data():
     f = open("Station_data.csv","w",newline="")
     writer = csv.writer(f)
@@ -116,6 +130,8 @@ def input_data():
     writer.writerows(stations_magenta_line)# type: ignore
     writer.writerows(stations_grey_line)# type: ignore
     f.close()
+
+
 def file_exists():
     try:
         f = open("Station_data.csv","r",newline="")
@@ -123,6 +139,8 @@ def file_exists():
         return True
     except FileNotFoundError:
         return False
+
+
 def load_data():
     f = open("Station_data.csv","r",newline="")
     reader = csv.reader(f)
@@ -141,15 +159,19 @@ def load_data():
     f.close()
     return Stations,Stations_name
 
+
 def get_station(id,Stations):
         for i in Stations:
             if id in i.id:
                 return i
+
+
 def get_station_by_name(name, Stations):
     for st in Stations:
         if st.station_name == name:
             return st
     return None         
+
 
 def shortest_path(start, stop, Stations):
     L = [(start, [start.station_name])]  
@@ -166,8 +188,9 @@ def shortest_path(start, stop, Stations):
                 L.append((neighbor, path + [adj_name.station_name]))
     return None
 
+
 def main():
-    Lines = line()
+    Lines = Line()
     Tickets_purchased = []
     input_data()
     Stations,Stations_name = load_data()
@@ -203,6 +226,8 @@ def main():
                 print(i,"(Start : ",i.start.station_name,"and end = ", i.end.station_name,")")               
         else:
             break
+
 main()
+
 
 
