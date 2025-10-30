@@ -11,3 +11,18 @@
 7. Users can purchase tickets to travel between stations on different lines.
 8. You must provide a list of instructions to assist the user in case there is a line change between the origin and the destination.
 9. Make multiple CSV files to store data for each different class. You can populate the actual objects in these files at the start of the program or as and when it is required.
+
+## Files Structure
+
+delhi_metro_lines.py - Various Delhi Metro lines and stations taken for implimentation, change this file to define various station and lines
+Station_data.csv - CSV file generated from data defined in delhi_metro_lines.py
+DVM_task.py - Main execution file to run the ticketing system
+
+## How to Run
+
+python DVM_task.py
+
+Runtime options:
+1. List all stations
+2. Purchase Ticket
+3. View all Purchased Ticket
