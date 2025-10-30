@@ -200,11 +200,11 @@ def main():
         print("Enter 1 to see all stations, Enter 2 to Purchase Ticket, Enter 3 to see purchased tickets, Enter anything else to exit")
         ch = int(input("Enter choice: "))
         if ch == 1:
-            for i in Stations:
-                print(i.station_name)
+            for st in Stations:
+                print(st.station_name)
         elif ch == 2:
             for i in range(0,len(Stations)):
-                print(i+1,Stations[i].station_name,"\n")
+                print(i+1,Stations[i].station_name)
             start_n = int(input("Enter start station serial number: "))
             end_n = int(input("Enter end station serial number: "))
             start = Stations[start_n-1]
@@ -214,8 +214,8 @@ def main():
             Tickets_purchased.append(ticket)
             ticket.price = ticket.calc_price(path)
             directions = ticket.directions(path,Stations)
-            print("Ticket price is: ",ticket.price,"\n\n")
-            print("Path is : \n")
+            print("Ticket price is: ",ticket.price)
+            print("Path is : ")
             for i in path:
                 print(i," - ",end ="")
             for i in directions:
@@ -223,11 +223,8 @@ def main():
         elif ch == 3:
             print("Ticket_id of purchased tickets: " )
             for i in Tickets_purchased:
-                print(i,"(Start : ",i.start.station_name,"and end = ", i.end.station_name,")")               
+                print(i,"(Start : ",i.start.station_name,"and end = ", i.end.station_name,") Price:", i.price)               
         else:
             break
 
 main()
-
-
-
