@@ -1,5 +1,5 @@
-# metro-ticket-system
-Metro Ticket Purchasing System
+## Metro Ticket Purchasing System
+
 ## Functionality
 
 1. Users can see a list of all the metro stations available.
